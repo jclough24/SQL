@@ -1,0 +1,32 @@
+--Create an outdoor store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, brand TEXT, quantity INTEGER, cost INTEGER, profit INTEGER);
+
+INSERT INTO store VALUES (1, "Sunglasses", "Oakley", 15, 50, 15);
+INSERT INTO store VALUES (2, "Hat", "Gilden", 12, 20, 7);
+INSERT INTO store VALUES (3, "Beanie", "Neff", 10, 15, 2);
+INSERT INTO store VALUES (4, "Scarf", "Amazon", 20, 18, 4);
+INSERT INTO store VALUES (5, "Puffer jacket", "Columbia", 21, 65, 30);
+INSERT INTO store VALUES (6, "Hoodie", "Nike", 8, 30, 10);
+INSERT INTO store VALUES (7, "Rain jacket", "Columbia", 14, 29, 14);
+INSERT INTO store VALUES (8, "Overalls", "Carhartt", 12, 50, 25);
+INSERT INTO store VALUES (9, "Fleece zipup", "Columbia", 13, 25, 11);
+INSERT INTO store VALUES (10, "Wool socks", "Columbia", 9, 12, 8);
+INSERT INTO store VALUES (11, "Hiking Boots", "Columbia", 19, 49, 31);
+INSERT INTO store VALUES (12, "Sandals", "Birkenstock", 6, 60, 20);
+INSERT INTO store VALUES (13, "Water shoes", "Tevas", 13, 41, 18);
+INSERT INTO store VALUES (14, "Water bottle", "Hydroflask", 25, 20, 10);
+INSERT INTO store VALUES (15, "Gloves", "Carhartt", 12, 20, 5);
+INSERT INTO store VALUES (16, "Ear muffs", "Amazon", 7, 10, 4);
+
+--display the database ordered by quantity.
+SELECT * FROM store 
+ORDER BY quantity desc;
+
+--what is the average profit from each item sold?
+SELECT AVG(profit) "avg profit of each item" 
+FROM store;
+
+--what is the average cost of Columbia items?
+SELECT AVG(cost) "avg cost of Columbia items"
+FROM STORE;

@@ -1,0 +1,65 @@
+CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, top_song TEXT, release_year INTEGER);
+INSERT INTO songs (name, top_song, release_year) VALUES ("Matt Meason", "Cut Deep", 2022);
+INSERT INTO songs (name, top_song, release_year) VALUES ("Rainbow Kitten Surprise", "Painkillers", 2017);
+INSERT INTO songs (name,top_song, release_year) VALUES ("Tyler Childers", "Shake the Frost", 2015);
+INSERT INTO songs (name, top_song, release_year) VALUES ("Hot Mulligan", "BCKYRD", 2018);
+INSERT INTO songs (name, top_song, release_year) VALUES ("Zach Bryan", "Revival", 2020);
+
+
+CREATE TABLE towns (id INTEGER PRIMARY KEY AUTOINCREMENT, artist_id INTEGER, hometown TEXT, current_town TEXT);
+INSERT INTO towns (artist_id, hometown, current_town) VALUES (1, "Virginia Beach", "Virginia Beach");
+INSERT INTO towns (artist_id, hometown, current_town) VALUES (2, "Boone, NC", "Memphis, TN");
+INSERT INTO towns (artist_id, hometown, current_town) VALUES (3, "Memphis, TN", "Los Angelos, CA");
+INSERT INTO towns (artist_id, hometown, current_town) VALUES (4, "Lansing, MI", "Seattle, WA");
+INSERT INTO towns (artist_id, hometown, current_town) VALUES (5, "Tacoma, WA", "Seattle, WA");
+
+CREATE TABLE worth (id INTEGER PRIMARY KEY AUTOINCREMENT, artist_id INTEGER, net_worth_millions INTEGER);
+INSERT INTO worth (artist_id, net_worth_millions) VALUES (1, 2.0);
+INSERT INTO worth (artist_id, net_worth_millions) VALUES (2, 1.02);
+INSERT INTO worth (artist_id, net_worth_millions) VALUES (3, 4.10);
+INSERT INTO worth (artist_id, net_worth_millions) VALUES (4, 1.1);
+INSERT INTO worth (artist_id, net_worth_millions) VALUES (5, 6.2);
+
+CREATE TABLE toured_together (id INTEGER PRIMARY KEY AUTOINCREMENT, artist_id1 TEXT, artist_id2 TEXT);
+INSERT INTO toured_together (artist_id1, artist_id2) VALUES (1, 2);
+INSERT INTO toured_together (artist_id1, artist_id2) VALUES (3, 5);
+INSERT INTO toured_together (artist_id1, artist_id2) VALUES (4, 1);
+
+
+ -- join together artist name and net worth from two seperate tables:
+ 
+SELECT songs.name, worth.net_worth_millions FROM songs
+    JOIN worth 
+    ON songs.id = worth.artist_id;
+    
+    
+    
+-- joing together artist name and cities lived in:
+    
+SELECT songs.name, towns.hometown, towns.current_town FROM towns
+    JOIN songs
+    ON songs.id = towns.artist_id;
+    
+    
+    
+    
+-- join together name, top song, and total net worth from seperate tables:
+
+SELECT songs.name, songs.top_song, worth.net_worth_millions FROM songs
+    JOIN worth
+    ON songs.id = worth.artist_id;
+
+
+
+-- self join table to show what artists have toured together:
+
+SELECT a.name, b.name FROM toured_together
+    JOIN songs a
+    ON toured_together.artist_id1 = a.id
+    JOIN songs b
+    ON toured_together.artist_id2 = b.id;
+    
+    
+    
+    
+    

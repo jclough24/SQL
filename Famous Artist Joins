@@ -34,7 +34,7 @@ SELECT songs.name, worth.net_worth_millions FROM songs
     
     
     
--- joing together artist name and cities lived in:
+-- join together artist name and cities lived in:
     
 SELECT songs.name, towns.hometown, towns.current_town FROM towns
     JOIN songs
